@@ -17,10 +17,12 @@ const postsSlice = createSlice({
       };
       state.posts = [...state.posts, newPost] as any;
     },
+
     deletePost: (state, { payload: postId }) => {
-      state.posts = state.posts.filter(
-        (p: any) => p._id !== postId);
-    },
+        state.posts = state.posts.filter(
+          (p: any) => p._id !== postId);
+      },
+      
     updatePost: (state, { payload: post }) => {
       state.posts = state.posts.map((p: any) =>
         p._id === post._id ? post : p
