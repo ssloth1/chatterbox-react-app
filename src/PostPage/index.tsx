@@ -1,15 +1,17 @@
 import React from "react";
-import posts from "../Database/posts.json";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import "./styles.css";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { deletePost } from "./reducer";
 
 export default function PostPage() {
   const { pid } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const post = posts.find((post) => post._id === pid);
+  const { posts } = useSelector((state: any) => state.postsReducer);
+  
+  // Find the specific post using the pid
+  const post = posts.find((p: any) => p._id === pid);
 
   const handleDelete = (postId: string) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
