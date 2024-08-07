@@ -1,12 +1,12 @@
 import React from "react";
 import posts from "../Database/posts.json";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./styles.css";
 
 export default function PostPage() {
   const { pid } = useParams();
 
-  const post = posts.find(post => post._id === pid);
+  const post = posts.find((post) => post._id === pid);
 
   return (
     <div>
@@ -18,9 +18,14 @@ export default function PostPage() {
         </div>
         <div className="col col-6">
           <div className="button-container">
-            <button className="btn btn-lg btn-danger me-1 float-end full-width">
-              Home Page
-            </button>
+            <Link
+              to={`/`}
+              className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+            >
+              <button className="btn btn-lg btn-danger me-1 float-end full-width">
+                Home Page
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -30,7 +35,9 @@ export default function PostPage() {
             <button className="btn btn-lg btn-danger edit-post me-1 float-end">
               Edit Post
             </button>
-            <br /><br /><br />
+            <br />
+            <br />
+            <br />
             <button className="btn btn-lg btn-danger del-post me-1 float-end">
               Delete Post
             </button>

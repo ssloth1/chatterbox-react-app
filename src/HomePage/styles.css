@@ -47,4 +47,11 @@
     box-sizing: border-box;       
   }
   
+  .link-dark {
+    text-decoration: none; 
+  }
+  
+  .link-dark:hover {
+    text-decoration: none; 
+  }
   
