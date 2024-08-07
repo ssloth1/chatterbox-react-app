@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from "react";
-import posts from "../Database/posts.json"; 
+import { Link } from "react-router-dom";
+import posts from "../Database/posts.json";
 import "./styles.css";
-
+type Post = {
+  _id: string;
+  title: string;
+  postTitle: string;
+  postDesc: string;
+};
 export default function HomePage() {
-  const [postData, setPostData] = useState<
-    { title: string; postTitle: string; postDesc: string }[]
-  >([]);
+  const [postData, setPostData] = useState<Post[]>([]);
 
   useEffect(() => {
-    const loadedPosts = posts.map(post => ({
-      title: post.title, 
+    const loadedPosts = posts.map((post) => ({
+      _id: post._id,
+      title: post.title,
       postTitle: post.postTitle,
-      postDesc: post.postDesc.length > 200 ? post.postDesc.substring(0, 197) + '...' : post.postDesc
+      postDesc:
+        post.postDesc.length > 200
+          ? `${post.postDesc.substring(0, 197)}...`
+          : post.postDesc,
     }));
     setPostData(loadedPosts);
   }, []);
-
   return (
     <div>
       <div className="row home-page-row">
@@ -45,9 +52,14 @@ export default function HomePage() {
             <h1>Posts</h1>
             {postData.map((post, index) => (
               <div key={index} className="post-details">
-                <b>{post.title}</b>
-                <h5>{post.postTitle}</h5>
-                <p>{post.postDesc}</p>
+                <Link
+                  to={`/${post._id}`}
+                  className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+                >
+                  <b>{post.title}</b>
+                  <h5>{post.postTitle}</h5>
+                  <p>{post.postDesc}</p>
+                </Link>
               </div>
             ))}
           </div>
