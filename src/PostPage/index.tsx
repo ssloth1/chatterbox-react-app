@@ -10,13 +10,12 @@ export default function PostPage() {
   const dispatch = useDispatch();
   const { posts } = useSelector((state: any) => state.postsReducer);
   
-  // Find the specific post using the pid
   const post = posts.find((p: any) => p._id === pid);
 
   const handleDelete = (postId: string) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       dispatch(deletePost(postId));
-      navigate('/');
+      navigate('/Home');
     }
   };
 
@@ -35,7 +34,7 @@ export default function PostPage() {
         </div>
         <div className="col col-6">
           <div className="button-container">
-            <Link to="/" className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover">
+            <Link to="/Home" className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover">
               <button className="btn btn-lg btn-danger me-1 float-end full-width">
                 Home Page
               </button>
