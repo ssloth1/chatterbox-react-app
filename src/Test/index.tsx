@@ -7,8 +7,10 @@ export default function Test() {
 	const [axiosTest, setAxiosTest] = useState("");
 
 	const fetchTestMessage = async () => {
+		console.log(`Fetching message from ${REMOTE_SERVER}/test`);
 		try {
 			const response = await axios.get(`${REMOTE_SERVER}/test`);
+			console.log('Response:', response.data);
 			setAxiosTest(response.data);
 		} catch (error) {
 			console.error('Error fetching test message:', error);
