@@ -10,7 +10,6 @@ type Post = {
 };
 export default function HomePage() {
   const [postData, setPostData] = useState<Post[]>([]);
-
   useEffect(() => {
     const loadedPosts = posts.map((post) => ({
       _id: post._id,

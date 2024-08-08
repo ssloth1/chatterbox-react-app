@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { posts } from "../Database";
-import { sys } from "typescript";
 const initialState = {
     posts : posts,
 };
