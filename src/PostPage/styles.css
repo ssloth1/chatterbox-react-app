@@ -1,0 +1,41 @@
+.search-container {
+	max-width: 300px;
+}
+
+.border-rounded {
+	border: 1px solid black;
+	border-radius: 0.25rem;
+	padding: 0.25rem;
+}
+
+.button-container {
+	width: 100%;
+}
+
+.btn-danger {
+	/* background-color: #ff4500;
+    border-color: #ff4500; */
+	padding: 0.5rem 1rem;
+}
+
+.border-0 {
+	border: none;
+}
+
+.home-page-row {
+	padding-top: 20px;
+	padding-left: 2rem;
+	padding-right: 1rem;
+}
+
+.edit-post {
+	width: 75%;
+}
+
+.del-post {
+	width: 75%;
+}
+
+.content-desc-container {
+	width: 75%;
+}
