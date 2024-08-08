@@ -8,7 +8,7 @@ This repository is for the frontend application of ChatterBox, a social discussi
 - **React App**: [ChatterBox React App]()
 
 ## Deployed
-- (todo)
+- **Node Server Deployement:**: [via Render](https://chatterbox-node-server.onrender.com)
 
 ## Members
 
