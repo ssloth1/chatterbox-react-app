@@ -21,13 +21,13 @@ export default function SignUpPage() {
         <div className="signUp-section">
           <h1>Create Account</h1>
           <input type="text" placeholder="First Name" />
-
+          <br />
           <input type="text" placeholder="Last Name" />
-
+          <br />
           <input type="email" placeholder="Email" />
-
+          <br />
           <input type="password" placeholder="Password" />
-
+          <br />
           <input type="date" />
 
           <button className="btn-signUp">

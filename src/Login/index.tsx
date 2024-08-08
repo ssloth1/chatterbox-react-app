@@ -9,6 +9,7 @@ export default function LoginPage() {
         <div className="login-section">
           <h1>Login to Your Account</h1>
           <input type="email" placeholder="Email" />
+          <br/>
           <input type="password" placeholder="Password" />
           <button className="btn-login">
             {" "}
