@@ -6,6 +6,8 @@ import PostPage from "./PostPage";
 import TopicPage from "./TopicPage";
 import LoginPage from"./Login";
 import SignUpPage from "./Signup";
+import CreatePost from "./PostPage/CreatePost";
+import EditPost from "./PostPage/EditPost";
 import store from "./store";
 import { Provider } from "react-redux";
 
@@ -20,6 +22,8 @@ function App() {
           <Route path="/Home" element={<HomePage/>}/>
           <Route path="/:pid" element={<PostPage />} />
           <Route path="/:tid/posts" element={<TopicPage/>}/>
+          <Route path="/:tid/CreatePost" element={<CreatePost/>}/>
+          <Route path="/:pid/EditPost" element={<EditPost/>}/>
         </Routes>
       </BrowserRouter>
     </Provider>

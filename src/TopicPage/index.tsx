@@ -15,14 +15,24 @@ export default function TopicPage() {
   const { tid } = useParams<{ tid: string }>(); // Capture the tid parameter from the URL
 
   useEffect(() => {
-    // Filter posts where post.title matches the tid from the URL
-    const filteredPosts = posts.filter(post => post.title === tid).map((post) => ({
-      _id: post._id,
-      title: post.title,
-      postTitle: post.postTitle,
-      postDesc: post.postDesc.length > 200 ? `${post.postDesc.substring(0, 197)}...` : post.postDesc,
-    }));
-    setPostData(filteredPosts);
+    console.log("Received tid:", tid); // Debugging log
+
+    // Check if tid is valid
+    if (tid) {
+      // Filter posts where post.title matches the tid from the URL
+      const filteredPosts = posts
+        .filter((post) => post.title === tid)
+        .map((post) => ({
+          _id: post._id,
+          title: post.title,
+          postTitle: post.postTitle,
+          postDesc:
+            post.postDesc.length > 200
+              ? `${post.postDesc.substring(0, 197)}...`
+              : post.postDesc,
+        }));
+      setPostData(filteredPosts);
+    }
   }, [tid]); // Depend on tid so that the effect runs again if the URL parameter changes
 
   return (
@@ -35,17 +45,43 @@ export default function TopicPage() {
         </div>
         <div className="col col-6">
           <div className="col button-container">
-            <Link to="/Home" className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover">
-              <button className="btn btn-lg btn-danger me-1 float-end full-width">Home Page</button>
+            <Link
+              to="/Home"
+              className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+            >
+              <button className="btn btn-lg btn-danger me-1 float-end full-width">
+                Home Page
+              </button>
             </Link>
-            <button className="btn btn-lg btn-danger me-1 float-end full-width">Profile</button>
+            <button className="btn btn-lg btn-danger me-1 float-end full-width">
+              Profile
+            </button>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col-3 left-col">
           <div className="create-topic-button-container">
-            <button className="btn btn-lg btn-danger me-1 float-end full-width">Create Topic</button>
+            <Link
+              to={`/${tid}/CreatePost`} // Correct link to CreatePost
+              className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+            >
+              <button className="btn btn-lg btn-danger edit-post me-1 float-end">
+                Create Post
+              </button>
+            </Link>
+            <br />
+            <br />
+            <br />
+            <button className="btn btn-lg btn-danger del-post me-1 float-end">
+              Delete Topic
+            </button>
+            <br />
+            <br />
+            <br />
+            <button className="btn btn-lg btn-danger del-post me-1 float-end">
+              Edit Topic
+            </button>
           </div>
         </div>
         <div className="col-9 center-col">
@@ -53,7 +89,10 @@ export default function TopicPage() {
             <h1>Posts</h1>
             {postData.map((post, index) => (
               <div key={index} className="post-details">
-                <Link to={`/${post._id}`} className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover">
+                <Link
+                  to={`/${post._id}`}
+                  className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+                >
                   <b>{post.title}</b>
                   <h5>{post.postTitle}</h5>
                   <p>{post.postDesc}</p>
@@ -62,7 +101,6 @@ export default function TopicPage() {
             ))}
           </div>
         </div>
-        <div className="col-3"></div>
       </div>
     </div>
   );
