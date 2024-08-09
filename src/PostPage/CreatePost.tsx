@@ -6,12 +6,11 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 
 
 export default function CreatePost() {
+    const { tid } = useParams();
     const [postTitle, setPostTitle] = useState("");
     const [postDesc, setPostDesc] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { tid } = useParams();
-  
     const newPost = () => {
       return {
         postTitle,

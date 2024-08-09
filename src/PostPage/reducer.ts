@@ -16,7 +16,6 @@ const postsSlice = createSlice({
         title: post.title
       };
       state.posts = [...state.posts, newPost] as any;
-      console.log(post);
     },
 
     deletePost: (state, { payload: postId }) => {

@@ -51,9 +51,14 @@ export default function PostPage() {
       <div className="row">
         <div className="col-3 left-col">
           <div className="create-topic-button-container">
-            <button className="btn btn-lg btn-danger edit-post me-1 float-end">
-              Edit Post
-            </button>
+            <Link
+              to={`/${pid}/EditPost`}
+              className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+            >
+              <button className="btn btn-lg btn-danger edit-post me-1 float-end">
+                Edit Post
+              </button>
+            </Link>
             <br />
             <br />
             <br />

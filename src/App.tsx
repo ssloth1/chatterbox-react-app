@@ -4,13 +4,12 @@ import { BrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
 import PostPage from "./PostPage";
 import TopicPage from "./TopicPage";
-import LoginPage from"./Login";
+import LoginPage from "./Login";
 import SignUpPage from "./Signup";
 import CreatePost from "./PostPage/CreatePost";
 import EditPost from "./PostPage/EditPost";
 import store from "./store";
 import { Provider } from "react-redux";
-
 
 function App() {
   return (
