@@ -14,8 +14,8 @@ interface Post {
 export default function EditPost() {
   const { pid } = useParams();
   const [post, setPost] = useState<Post | null>(null);
-  const [postTitle, setPostTitle] = useState('');  // Initially empty
-  const [postDesc, setPostDesc] = useState('');  // Initially empty
+  const [postTitle, setPostTitle] = useState('');  
+  const [postDesc, setPostDesc] = useState(''); 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
