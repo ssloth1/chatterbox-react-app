@@ -9,19 +9,19 @@ export default function PostPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { posts } = useSelector((state: any) => state.postsReducer);
-  
+
   const post = posts.find((p: any) => p._id === pid);
 
   const handleDelete = (postId: string) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       dispatch(deletePost(postId));
-      navigate('/Home');
+      navigate("/Home");
     }
   };
 
   if (!post) {
-    navigate('/'); 
-    return null; 
+    navigate("/");
+    return null;
   }
 
   return (
@@ -34,11 +34,17 @@ export default function PostPage() {
         </div>
         <div className="col col-6">
           <div className="button-container">
-            <Link to="/Home" className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover">
+            <Link
+              to="/Home"
+              className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+            >
               <button className="btn btn-lg btn-danger me-1 float-end full-width">
                 Home Page
               </button>
             </Link>
+            <button className="btn btn-lg btn-danger me-1 float-end full-width">
+              Profile
+            </button>
           </div>
         </div>
       </div>
@@ -48,8 +54,13 @@ export default function PostPage() {
             <button className="btn btn-lg btn-danger edit-post me-1 float-end">
               Edit Post
             </button>
-            <br /><br /><br />
-            <button className="btn btn-lg btn-danger del-post me-1 float-end" onClick={() => handleDelete(post._id)}>
+            <br />
+            <br />
+            <br />
+            <button
+              className="btn btn-lg btn-danger del-post me-1 float-end"
+              onClick={() => handleDelete(post._id)}
+            >
               Delete Post
             </button>
           </div>
@@ -57,7 +68,13 @@ export default function PostPage() {
         <div className="col-9 center-col">
           <div className="content-desc-container">
             <>
-              <h5>{post.title}</h5>
+              <Link
+                to={`/${post.title}/posts`}
+                className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+              >
+                <h5>{post.title}</h5>
+              </Link>
+
               <h2>{post.postTitle}</h2>
               <p>{post.postDesc}</p>
             </>

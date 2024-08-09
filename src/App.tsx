@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
 import PostPage from "./PostPage";
+import TopicPage from "./TopicPage";
 import LoginPage from"./Login";
 import SignUpPage from "./Signup";
 import store from "./store";
@@ -18,6 +19,7 @@ function App() {
           <Route path="/SignUp" element={<SignUpPage/>}/>
           <Route path="/Home" element={<HomePage/>}/>
           <Route path="/:pid" element={<PostPage />} />
+          <Route path="/:tid/posts" element={<TopicPage/>}/>
         </Routes>
       </BrowserRouter>
     </Provider>
