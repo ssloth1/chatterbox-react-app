@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+import "./index.css";
 import { Link } from "react-router-dom";
 
 export default function LoginPage() {
@@ -11,28 +11,15 @@ export default function LoginPage() {
 					<input type="email" placeholder="Email" />
 					<br />
 					<input type="password" placeholder="Password" />
-					<button className="btn-login">
-						{" "}
-						<Link
-							to={`/Home`}
-							className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
-						>
-							Log In
-						</Link>
-					</button>
+					<Link to={`/Home`} className="btn-login">
+						Log In
+					</Link>
 				</div>
 				<div className="signup-section">
 					<h2>New Here?</h2>
-
-					<button className="btn-signup">
-						{" "}
-						<Link
-							to={`/SignUp`}
-							className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
-						>
-							Sign Up{" "}
-						</Link>
-					</button>
+					<Link to={`/SignUp`} className="btn-signup">
+						Sign Up
+					</Link>
 				</div>
 			</div>
 		</div>

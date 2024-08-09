@@ -55,13 +55,16 @@ input {
 	border: none;
 	cursor: pointer;
 }
-
 .btn-login {
 	background-color: #dc3545;
 	color: white;
+	text-align: center;
+	text-decoration: none;
 }
 
 .btn-signup {
 	background-color: white;
-	color: #1E6C87;
+	color: #dc3545;
+	text-align: center;
+	text-decoration: none;
 }
