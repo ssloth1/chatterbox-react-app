@@ -16,7 +16,7 @@ export default function LoginPage() {
 					</Link>
 				</div>
 				<div className="signup-section">
-					<h2>New Here?</h2>
+					<h2>Join the conversation!</h2>
 					<Link to={`/SignUp`} className="btn-signup">
 						Sign Up
 					</Link>
