@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
 import PostPage from "./PostPage";
-import LoginPage from "./Login";
+import LoginPage from "./Account/LoginPage";
 import SignUpPage from "./Signup";
 import store from "./store";
 import { Provider } from "react-redux";
