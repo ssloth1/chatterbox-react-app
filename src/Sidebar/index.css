@@ -1,0 +1,32 @@
+/* Sidebar styles */
+.sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 120px;
+	height: 100vh;
+	background-color: #b52a38;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-right: 1px solid #a62830;
+	padding-top: 20px;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	z-index: 1000;
+	color: #f8f9fa;
+}
+
+.sidebar a {
+	color: #f8f9fa;
+	text-decoration: none;
+}
+
+.sidebar .icon {
+	color: #ffffff;
+}
+
+.main-content {
+	margin-left: 120px;
+	padding: 20px;
+	background-color: #f8f9fa;
+}
