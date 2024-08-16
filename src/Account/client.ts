@@ -1,6 +1,10 @@
+// src/Account/client.ts
 import axios from "axios";
+
 const axiosWithCredentials = axios.create({ withCredentials: true });
+
 export const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+console.log(REMOTE_SERVER);
 export const USERS_API = `${REMOTE_SERVER}/api/users`;
 
 export const signin = async (credentials: any) => {
@@ -17,5 +21,6 @@ export const signup = async (user: any) => {
 };
 export const signout = async () => {
 	const response = await axiosWithCredentials.post(`${USERS_API}/signout`);
+	console.log(response.data);
 	return response.data;
 };

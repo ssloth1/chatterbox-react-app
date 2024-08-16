@@ -1,12 +1,16 @@
+// src/App.tsx
+
 import React from "react";
 import { Routes, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
 import PostPage from "./PostPage";
-import LoginPage from "./Login";
-import SignUpPage from "./Signup";
+import LoginPage from "./Account/LoginPage";
+import SignupPage from "./Account/SignupPage";
 import store from "./store";
+import ProfilePage from "./Account/ProfilePage";
 import { Provider } from "react-redux";
+import AuthWrapper from "./Account/AuthWrapper";
 
 import Test from "./Test";
 
@@ -22,14 +26,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/:pid" element={<PostPage />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/home" element={<AuthWrapper> <HomePage /> </AuthWrapper>} />
+          <Route path="/:pid" element={<AuthWrapper> <PostPage /> </AuthWrapper>} />
+          <Route path="/test" element={<AuthWrapper> <Test /> </AuthWrapper>} />
+          <Route path="/profile" element={<AuthWrapper> <ProfilePage /> </AuthWrapper>} />
         </Routes>
       </BrowserRouter>
     </Provider>
   );
 }
-
 export default App;

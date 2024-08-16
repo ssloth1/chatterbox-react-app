@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import "./styles.css";
+import "./index.css";
 import { useSelector, useDispatch } from "react-redux";
 import { deletePost } from "./reducer";
 
