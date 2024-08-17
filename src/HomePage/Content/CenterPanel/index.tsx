@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import TopicCard from "./TopicCard";
 import { AnyARecord } from "dns";
 export default function CenterPanel({topics, displayAllTopics}:{topics: any, displayAllTopics:AnyARecord}) {
-    console.log(topics);
 
   return (
     <div className="col-12 col-md-9 border border-1 ">

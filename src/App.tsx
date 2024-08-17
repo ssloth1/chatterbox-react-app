@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import HomePage from "./HomePage";
-// import TopicPage from "./TopicPage";
+import TopicPage from "./TopicPage";
 import LoginPage from "./Login";
 import SignUpPage from "./Signup";
 // import TopicPage from "./TopicPage";
@@ -18,6 +18,7 @@ function App() {
           <Route path="/" element={<LoginPage />} />
           <Route path="/SignUp" element={<SignUpPage/>}/>
           <Route path="/Home/*" element={<HomePage/>}/>
+          <Route path="/Topics/:tid/*" element={<TopicPage/>}/>
           {/* <Route path="/:tid" element={<TopicPage />} />
           <Route path="/:tid/EditTopic" element={<EditTopic />} /> */}
           {/* <Route path="/:tid/posts" element={<TopicPage/>}/>

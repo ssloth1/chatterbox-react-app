@@ -15,8 +15,6 @@ export default function Content({ topics, displayAllTopics }: { topics: any , di
         <Route path="/CreateTopic" element={<CreateTopic displayAllTopics={displayAllTopics} />} />
         <Route path="/EditTopic/:tid" element={<EditTopic  displayAllTopics={displayAllTopics} />} />
      </Routes>
-      {/*  */}
-      {/* <EditTopic /> */}
     </div>
   );
 }
