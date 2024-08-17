@@ -1,12 +1,20 @@
+
+import { deleteTopic} from "../../../../TopicPage/client";
 export default function DeleteModal({
+    displayAllTopics,
     isOpen,
     onClose,
+    topicId,
   }: {
+    displayAllTopics : any;
     isOpen: boolean;
     onClose: any;
+    topicId: any
   }) {
     if (!isOpen) return null;
-  
+    const removeTopic = () =>{
+      deleteTopic(topicId)
+    }
     return (
       <div
         className="modal show"
@@ -36,7 +44,8 @@ export default function DeleteModal({
                 className="btn btn-danger"
                 onClick={() => {
                   // Add delete logic here
-                  console.log("Topic deleted!");
+                  removeTopic();
+                  displayAllTopics('');
                   onClose(); // Close modal after action
                 }}
               >

@@ -3,12 +3,19 @@ import LeftSideBar from "./LeftSideBar";
 import CenterPanel from "./CenterPanel";
 import CreateTopic from "./CenterPanel/CreateTopic";
 import EditTopic from "./CenterPanel/EditTopic";
-export default function Content({ topics }: { topics: any }) {
+import { Route, Routes , Navigate} from "react-router-dom";
+
+export default function Content({ topics, displayAllTopics }: { topics: any , displayAllTopics: any}) {
   return (
     <div className="row">
-      <LeftSideBar />
-      <CenterPanel topics ={topics} />
-      {/* <CreateTopic/> */}
+      <LeftSideBar/>
+      <Routes>
+        <Route path="/" element={<Navigate to="CenterPanel" />} />
+        <Route path="/CenterPanel" element={<CenterPanel topics={topics} displayAllTopics={displayAllTopics} />} />
+        <Route path="/CreateTopic" element={<CreateTopic displayAllTopics={displayAllTopics} />} />
+        <Route path="/EditTopic/:tid" element={<EditTopic  displayAllTopics={displayAllTopics} />} />
+     </Routes>
+      {/*  */}
       {/* <EditTopic /> */}
     </div>
   );

@@ -13,6 +13,7 @@ export default function HomePage() {
     const topics = await client.fetchAllTopics(searchText);
     setTopics(topics);
   }
+
   useEffect(() => {
     displayAllTopics(searchText);
   }, []);
@@ -22,7 +23,7 @@ export default function HomePage() {
     <NavBar searchText={searchText}
     setSearchText={setSearchText} 
     displayAllTopics={displayAllTopics}/>
-    <Content topics ={topics}/>
+    <Content topics ={topics} displayAllTopics={displayAllTopics}/>
 
     {/* <div>
       <div className="row home-page-row">
