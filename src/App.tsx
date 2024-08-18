@@ -13,6 +13,10 @@ import { Provider } from "react-redux";
 import AuthWrapper from "./Account/AuthWrapper";
 import LandingPage from "./LandingPage";
 
+// import bootstrap css
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 
 import Test from "./Test";
 
