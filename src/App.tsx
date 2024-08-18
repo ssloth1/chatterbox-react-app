@@ -9,6 +9,7 @@ import SignUpPage from "./Signup";
 // import EditTopic from "./TopicPage/EditTopicPage";
 import store from "./store";
 import { Provider } from "react-redux";
+import PostPage from "./PostPage";
 
 function App() {
   return (
@@ -19,11 +20,7 @@ function App() {
           <Route path="/SignUp" element={<SignUpPage/>}/>
           <Route path="/Home/*" element={<HomePage/>}/>
           <Route path="/Topics/:tid/*" element={<TopicPage/>}/>
-          {/* <Route path="/:tid" element={<TopicPage />} />
-          <Route path="/:tid/EditTopic" element={<EditTopic />} /> */}
-          {/* <Route path="/:tid/posts" element={<TopicPage/>}/>
-          <Route path="/:tid/CreatePost" element={<CreatePost/>}/>
-          <Route path="/:pid/EditPost" element={<EditPost/>}/> */}
+          <Route path="/Topics/:tid/CenterPanel/:pid" element={<PostPage/>}/>         
         </Routes>
       </BrowserRouter>
     </Provider>
