@@ -15,8 +15,8 @@ export default function EditTopic({ displayAllTopics }: { displayAllTopics: any 
 			if (tid) {
 				const fetchedTopic = await fetchTopic(tid);
 				setTopic(fetchedTopic);
-				setTitle(fetchedTopic.topicTitle);
-				setDesc(fetchedTopic.topicDesc);
+				setTitle(fetchedTopic.topicName);
+				setDesc(fetchedTopic.topicDescription);
 			}
 		};
 		fetchData();
@@ -24,7 +24,7 @@ export default function EditTopic({ displayAllTopics }: { displayAllTopics: any 
 
 	const renewTopic = async () => {
 		if (topic) {
-			const updatedTopic = { ...topic, topicTitle: title, topicDesc: desc };
+			const updatedTopic = { ...topic, topicName: title, topicDescription: desc };
 			await updateTopic(updatedTopic);
 			navigate("./../../");
 			displayAllTopics(""); // Assuming this updates the topic listnavigate("./../");
@@ -33,10 +33,10 @@ export default function EditTopic({ displayAllTopics }: { displayAllTopics: any 
 
 	return (
 		<div className="col-12 col-md-9 border border-1">
-			<div className="mt-4 mx-5"><div className="row heading"><h1 className="text-muted">Edit Topic</h1></div><div className="row form"><form><div className="form-group mt-2"><label htmlFor="topicTitle">Topic Title:</label><input
+			<div className="mt-4 mx-5"><div className="row heading"><h1 className="text-muted">Edit Topic</h1></div><div className="row form"><form><div className="form-group mt-2"><label htmlFor="topicName">Topic Title:</label><input
 				type="text" // Changed from "title" to "text"
 				className="form-control mt-2"
-				id="topicTitle"
+				id="topicName"
 				placeholder="Enter Title"
 				value={title}
 				onChange={(e) => setTitle(e.target.value)}
