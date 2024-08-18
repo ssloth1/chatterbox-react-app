@@ -24,3 +24,8 @@ export const signout = async () => {
 	console.log(response.data);
 	return response.data;
 };
+
+export const anonymousLogin = async () => {
+	const response = await axiosWithCredentials.post(`${USERS_API}/anonymous`);
+	return response.data;
+};

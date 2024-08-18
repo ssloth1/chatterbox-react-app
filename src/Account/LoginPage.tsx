@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
-import { signin } from "./client";
+import { signin, anonymousLogin } from "./client";  // Import anonymous login function
 
 import "../Account/AccountStyles/LoginPage.css";
 
 export default function LoginPage() {
-	const [identifier, setIdentifier] = useState(""); // im calling this identifier because it can be either email or username
+	const [identifier, setIdentifier] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
@@ -21,6 +21,16 @@ export default function LoginPage() {
 			navigate("/Home");
 		} catch (error) {
 			setError("Login failed. Please check your credentials.");
+		}
+	};
+
+	const handleAnonymousLogin = async () => {
+		try {
+			const user = await anonymousLogin();
+			dispatch(setCurrentUser(user));
+			navigate("/Home");
+		} catch (error) {
+			setError("Anonymous login failed. Please try again.");
 		}
 	};
 
@@ -46,6 +56,9 @@ export default function LoginPage() {
 					<br />
 					<button className="btn-login" onClick={handleLogin}>
 						Log In
+					</button>
+					<button className="btn-anonymous" onClick={handleAnonymousLogin}>
+						Access Anonymously
 					</button>
 				</div>
 				<div className="signup-section">
