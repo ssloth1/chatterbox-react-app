@@ -12,6 +12,7 @@ import ProfilePage from "./Account/ProfilePage";
 import { Provider } from "react-redux";
 import AuthWrapper from "./Account/AuthWrapper";
 import LandingPage from "./LandingPage";
+import StaffPanel from "./StaffPanel";
 
 // import bootstrap css
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -34,6 +35,12 @@ function App() {
           <Route path="/test" element={<AuthWrapper> <Test /> </AuthWrapper>} />
           <Route path="/profile" element={<AuthWrapper> <ProfilePage /> </AuthWrapper>} />
           <Route path="/Topics/:tid/*" element={<AuthWrapper> <TopicPage /> </AuthWrapper>} />
+
+          {/* to acess the admin panel, a staff member must be logged in, 
+          then they will need to manually enter the route https://chatterbox-react-app.netlify.app/admin,
+          or if they are working locally http://localhost:3000/admin */}
+          <Route path="/admin" element={<AuthWrapper> <StaffPanel /> </AuthWrapper>} />
+
         </Routes>
       </BrowserRouter>
     </Provider>
