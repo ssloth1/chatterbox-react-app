@@ -16,7 +16,7 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
 					const user = await profile();
 					dispatch(setCurrentUser(user));
 				} catch (err) {
-					navigate("/"); // Redirect to login if user is not authenticated
+					navigate("/Login"); // Redirect to login if user is not authenticated
 				}
 			}
 		};

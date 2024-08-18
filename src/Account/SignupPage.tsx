@@ -31,7 +31,7 @@ export default function SignupPage() {
 			};
 			const newUser = await signup(user);
 			dispatch(setCurrentUser(newUser));  // Set the user as authenticated
-			navigate("/home");  // Redirect to home after signup
+			navigate("/Home");  // Redirect to home after signup
 		} catch (err) {
 			setError("Failed to create an account. Please try again.");
 		}

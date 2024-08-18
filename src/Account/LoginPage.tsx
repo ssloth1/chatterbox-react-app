@@ -18,7 +18,7 @@ export default function LoginPage() {
 			const credentials = { identifier, password };
 			const user = await signin(credentials);
 			dispatch(setCurrentUser(user));
-			navigate("/home");
+			navigate("/Home");
 		} catch (error) {
 			setError("Login failed. Please check your credentials.");
 		}
@@ -50,7 +50,7 @@ export default function LoginPage() {
 				</div>
 				<div className="signup-section">
 					<h2>Join the conversation!</h2>
-					<Link to="/signup" className="btn-signup">Sign Up</Link>
+					<Link to="/SignUp" className="btn-signup">Sign Up</Link>
 				</div>
 			</div>
 		</div>
