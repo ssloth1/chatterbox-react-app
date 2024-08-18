@@ -9,9 +9,9 @@ export default function LeftSideBar() {
             <button 
                 type="button" 
                 className="btn btn-success w-50 m-5"
-                onClick={() => navigate('./CreateTopic')} // Use navigate to change the route
+                onClick={() => navigate('./CreatePost')}
             >
-                Create Topic
+                Create Post
             </button>
         </div>
     );

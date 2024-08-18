@@ -1,37 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { topics } from "../Database";
 const initialState = {
   topics: [],
-  posts: [],
 };
 const topicsSlice = createSlice({
   name: "topics",
   initialState,
   reducers: {
-    setPosts: (state, action) => {
-      state.posts = action.payload;
-    },
-    addPost: (state, { payload: post }) => {
-      const newPost: any = {
-        _id: new Date().getTime().toString(),
-        postID: post.postID,
-        postTitle: post.postTitle,
-        topicDesc: post.postDesc,
-        comments: [],
-        postDate: newDate(),
-        likes: post.likes,
-        creator: post.creator
-      };
-      state.posts = [...state.posts, newPost] as any;
-    },
-    //editPost;
-    updatePost: (state, { payload: topic }) => {
-      state.topics = state.topics.map((t: any) =>
-        t._id === topic._id ? topic : t
-      ) as any;
-    },
-
-    //likePost;- 
     setTopics: (state, action) => {
       state.topics = action.payload;
     },
@@ -59,10 +33,6 @@ const topicsSlice = createSlice({
     },
   },
 });
-export const { addTopic, deleteTopic, updateTopic, editTopic, setTopics, setPosts, addPost, updatePost  } =
+export const { addTopic, deleteTopic, updateTopic, editTopic, setTopics  } =
 topicsSlice.actions;
 export default topicsSlice.reducer;
-
-function newDate() {
-  throw new Error("Function not implemented.");
-}

@@ -2,7 +2,6 @@ import axios from "axios";
 // const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 const REMOTE_SERVER = "http://localhost:4000"
 const TOPICS_API = `${REMOTE_SERVER}/api/topics`;
-const POSTS_API = `${REMOTE_SERVER}/api/posts`;
 export const fetchAllTopics = async (searchText = '') => {
     // Construct the URL with a query string for searchText if it's not empty
     const url = `${TOPICS_API}?searchText=${encodeURIComponent(searchText)}`;
@@ -16,12 +15,6 @@ export const fetchAllTopics = async (searchText = '') => {
       // Optionally handle errors differently or re-throw them
       throw error;
     }
-};
-
-export const fetchAllPosts= async () => {
-    // Construct the URL with a query string for searchText if it's not empty
-    const { data } = await axios.get(POSTS_API);
-    return data;
 };
 
 
@@ -41,8 +34,4 @@ return response.data;
 export const fetchTopic = async(id: string)=>{
 const response = await axios.get(`${TOPICS_API}/${id}`);
 return response.data;
-}
-
-export function deletePost(postId: string) {
-  throw new Error("Function not implemented.");
 }

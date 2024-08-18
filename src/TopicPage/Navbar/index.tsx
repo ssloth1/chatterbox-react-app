@@ -5,20 +5,19 @@ import { fetchAllTopics } from "../../TopicPage/client";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 export default function NavBar({
-  searchText,
-  setSearchText,
-  displayAllTopics,
-}: {
-  searchText: any;
-  setSearchText: any;
-  displayAllTopics : any;
-}) {
+    searchText,
+    setSearchText,
+    fetchPosts,
+  }: {
+    searchText: any;
+    setSearchText: any;
+    fetchPosts : any;
+  }) {
 
-  const navigate = useNavigate();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light ">
       <div className="container-fluid">
-        <a className="navbar-brand mx-5" onClick={() =>{displayAllTopics(''); navigate('./')}}>
+        <a className="navbar-brand mx-5">
           ChatterBox
         </a>
         <button
@@ -35,7 +34,7 @@ export default function NavBar({
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" onClick={() =>{displayAllTopics(''); navigate('./')}}>
+              <a className="nav-link active" aria-current="page">
                 Home
               </a>
             </li>
@@ -52,7 +51,7 @@ export default function NavBar({
               }}
               onKeyUp={(e) => {
                 if (e.key === "Enter") {
-                  displayAllTopics(searchText);
+                  fetchPosts(searchText);
                 }
               }}
               value={searchText}
@@ -61,7 +60,7 @@ export default function NavBar({
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" onClick={()=>{displayAllTopics(searchText)}}>Search</button>
+            <button className="btn btn-outline-success">Search</button>
           </div>
         </div>
       </div>
