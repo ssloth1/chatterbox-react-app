@@ -1,9 +1,4 @@
-//import React, { useState, useEffect } from "react";
-
-
-//import { fetchAllTopics } from "../../TopicPage/client";
-
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 export default function NavBar({
 	searchText,
@@ -14,8 +9,8 @@ export default function NavBar({
 	setSearchText: any;
 	displayAllTopics: any;
 }) {
+	const navigate = useNavigate();  // Initialize the useNavigate hook
 
-	const navigate = useNavigate();
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light ">
 			<div className="container-fluid">
@@ -41,7 +36,10 @@ export default function NavBar({
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#">
+							<a
+								className="nav-link"
+								onClick={() => navigate('/profile')}  // Navigate to ProfilePage
+							>
 								Profile
 							</a>
 						</li>
@@ -62,7 +60,9 @@ export default function NavBar({
 							placeholder="Search"
 							aria-label="Search"
 						/>
-						<button className="btn btn-outline-success" onClick={() => { displayAllTopics(searchText) }}>Search</button>
+						<button className="btn btn-outline-success" onClick={() => { displayAllTopics(searchText) }}>
+							Search
+						</button>
 					</div>
 				</div>
 			</div>

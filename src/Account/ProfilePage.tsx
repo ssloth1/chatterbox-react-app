@@ -6,18 +6,30 @@ import { logout, selectCurrentUser, setCurrentUser } from "./reducer";
 import Sidebar from "../Sidebar";
 import "./AccountStyles/ProfilePage.css";
 
+import { getZodiacSign } from "../Utils/zodiacUtils";
+import { fetchHoroscope } from "../API/horoscopeAPI";
+
 export default function ProfilePage() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const currentUser = useSelector(selectCurrentUser);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState("");
+	const [horoscope, setHoroscope] = useState("");
 
 	useEffect(() => {
 		const fetchProfile = async () => {
 			try {
 				const user = await profile();
 				dispatch(setCurrentUser(user));
+
+				// Determine zodiac sign and fetch horoscope
+				if (user.dob) {
+					const date = new Date(user.dob);
+					const zodiacSign = getZodiacSign(date.getDate(), date.getMonth() + 1);
+					const horoscope = await fetchHoroscope(zodiacSign);  // Fetch from backend
+					setHoroscope(horoscope);
+				}
 			} catch (err) {
 				setError("Failed to fetch user details.");
 				navigate("/");
@@ -29,7 +41,6 @@ export default function ProfilePage() {
 		fetchProfile();
 	}, [dispatch, navigate]);
 
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const handleSignOut = async () => {
 		await signout();
 		dispatch(logout());
@@ -60,6 +71,7 @@ export default function ProfilePage() {
 						{currentUser.phone && <p><strong>Phone:</strong> {currentUser.phone}</p>}
 						{currentUser.dob && <p><strong>Date of Birth:</strong> {new Date(currentUser.dob).toLocaleDateString()}</p>}
 						<p><strong>Role:</strong> {currentUser.role}</p>
+						<p><strong>Today's Horoscope:</strong> {horoscope}</p>
 						<button className="btn-signout" onClick={handleSignOut}>
 							Sign Out
 						</button>
