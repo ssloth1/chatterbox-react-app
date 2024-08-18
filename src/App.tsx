@@ -19,6 +19,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 
 import Test from "./Test";
+import TopicPage from "./TopicPage";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path="/:pid" element={<AuthWrapper> <PostPage /> </AuthWrapper>} />
           <Route path="/test" element={<AuthWrapper> <Test /> </AuthWrapper>} />
           <Route path="/profile" element={<AuthWrapper> <ProfilePage /> </AuthWrapper>} />
-          <Route path="/Topics/:tid" element={<AuthWrapper> <HomePage /> </AuthWrapper>} />
+          <Route path="/Topics/:tid/*" element={<AuthWrapper> <TopicPage /> </AuthWrapper>} />
         </Routes>
       </BrowserRouter>
     </Provider>
