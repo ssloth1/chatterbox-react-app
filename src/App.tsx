@@ -20,12 +20,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import Test from "./Test";
 
-// add a .env.local file to the root of the project and add the following line
-//REACT_APP_REMOTE_SERVER=http://localhost:4000
-// const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
-// you can also go to /test to check if the node server is running
-// just make sure you have .env.local file set up with the correct server
-
 function App() {
   return (
     <Provider store={store}>
