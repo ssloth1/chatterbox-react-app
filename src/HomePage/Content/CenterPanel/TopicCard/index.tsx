@@ -15,8 +15,8 @@ export default function TopicCard({
 	return (
 		<div className="card w-100 border border-2 mt-3">
 			<div className="card-body">
-				<h5 className="card-title">{topic.topicName}</h5>
-				<p className="card-text">{topic.topicDescription}</p>
+				<h5 className="card-title">{topic.topicTitle}</h5>
+				<p className="card-text">{topic.topicDesc}</p>
 				<Link
 					to={`/Topics/${topic._id}`}
 					className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
