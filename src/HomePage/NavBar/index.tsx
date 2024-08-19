@@ -1,4 +1,7 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { selectCurrentUser } from '../../Account/reducer';
 
 export default function NavBar({
 	searchText,
@@ -9,7 +12,8 @@ export default function NavBar({
 	setSearchText: any;
 	displayAllTopics: any;
 }) {
-	const navigate = useNavigate();  // Initialize the useNavigate hook
+	const navigate = useNavigate();
+	const currentUser = useSelector(selectCurrentUser);
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light ">
@@ -36,15 +40,19 @@ export default function NavBar({
 							</a>
 						</li>
 						<li className="nav-item">
-							<a
-								className="nav-link"
-								onClick={() => navigate('/profile')}  // Navigate to ProfilePage
-							>
+							<a className="nav-link" onClick={() => navigate('/profile')}>
 								Profile
 							</a>
 						</li>
+						{currentUser?.role === "STAFF" && (
+							<li className="nav-item">
+								<a className="nav-link" onClick={() => navigate('/admin')}>
+									Admin Panel
+								</a>
+							</li>
+						)}
 					</ul>
-					<div className="d-flex">
+					<div className="d-flex align-items-center">
 						<input
 							onChange={(e) => {
 								setSearchText(e.target.value);
@@ -60,9 +68,14 @@ export default function NavBar({
 							placeholder="Search"
 							aria-label="Search"
 						/>
-						<button className="btn btn-outline-success" onClick={() => { displayAllTopics(searchText) }}>
+						<button className="btn btn-outline-success me-3" onClick={() => { displayAllTopics(searchText) }}>
 							Search
 						</button>
+						{currentUser && (
+							<span className="navbar-text">
+								Logged in as: <strong>{currentUser.username}</strong>
+							</span>
+						)}
 					</div>
 				</div>
 			</div>

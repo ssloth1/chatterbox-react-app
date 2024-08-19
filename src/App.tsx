@@ -26,6 +26,7 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
+
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/Login" element={<LoginPage />} />
@@ -42,6 +43,7 @@ function App() {
           <Route path="/admin" element={<AuthWrapper> <StaffPanel /> </AuthWrapper>} />
 
         </Routes>
+
       </BrowserRouter>
     </Provider>
   );

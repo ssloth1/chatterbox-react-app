@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../Account/reducer";
-import { findAllUsers, deleteUser } from "../Users/client";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Table, Alert } from "react-bootstrap";
+import { selectCurrentUser } from "../Account/reducer";
+import { findAllUsers, deleteUser } from "../Users/client";
+import Sidebar from "../Sidebar";
 
 export default function StaffPanel() {
     const currentUser = useSelector(selectCurrentUser);
@@ -45,44 +46,52 @@ export default function StaffPanel() {
         }
     };
 
+    const displayAllTopics = (text: string) => {
+        // Implement your search/filter logic here if needed
+        console.log("Displaying topics with search text:", text);
+    };
+
     if (!currentUser || currentUser.role !== "STAFF") {
         return null;
     }
 
     return (
-        <Container className="mt-4">
-            <h2 className="text-center mb-4">Staff Panel</h2>
-            {error && <Alert variant="danger">{error}</Alert>}
-            <Table striped bordered hover responsive>
-                <thead className="table-dark">
-                    <tr>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users.map(user => (
-                        <tr key={user._id}>
-                            <td>{user.username}</td>
-                            <td>{user.email}</td>
-                            <td>{user.role}</td>
-                            <td>
-                                {user.role !== "STAFF" && (
-                                    <Button
-                                        variant="danger"
-                                        onClick={() => handleDelete(user._id)}
-                                        style={{ padding: '5px 10px', minWidth: '75px' }}
-                                    >
-                                        Delete
-                                    </Button>
-                                )}
-                            </td>
+        <div className="d-flex">
+            <Sidebar />
+            <Container className="mt-4">
+                <h2 className="text-center mb-4">Staff Panel</h2>
+                {error && <Alert variant="danger">{error}</Alert>}
+                <Table striped bordered hover responsive>
+                    <thead className="table-dark">
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
                         </tr>
-                    ))}
-                </tbody>
-            </Table>
-        </Container>
+                    </thead>
+                    <tbody>
+                        {users.map(user => (
+                            <tr key={user._id}>
+                                <td>{user.username}</td>
+                                <td>{user.email}</td>
+                                <td>{user.role}</td>
+                                <td>
+                                    {user.role !== "STAFF" && (
+                                        <Button
+                                            variant="danger"
+                                            onClick={() => handleDelete(user._id)}
+                                            style={{ padding: '5px 10px', minWidth: '75px' }}
+                                        >
+                                            Delete
+                                        </Button>
+                                    )}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </Container>
+        </div>
     );
 }
