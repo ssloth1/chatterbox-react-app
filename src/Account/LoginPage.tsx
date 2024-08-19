@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
 import { signin, anonymousLogin } from "./client";  // Import anonymous login function
 
-import "../Account/AccountStyles/LoginPage.css";
 
 export default function LoginPage() {
 	const [identifier, setIdentifier] = useState("");
