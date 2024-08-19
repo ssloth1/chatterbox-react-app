@@ -73,6 +73,7 @@ export default function StaffPanel() {
                                     <Button
                                         variant="danger"
                                         onClick={() => handleDelete(user._id)}
+                                        style={{ padding: '5px 10px', minWidth: '75px' }}
                                     >
                                         Delete
                                     </Button>
