@@ -60,7 +60,7 @@ export default function NavBar({
 							placeholder="Search"
 							aria-label="Search"
 						/>
-						<button className="btn btn-outline-success">Search</button>
+						<button className="btn btn-outline-success" onClick={()=>fetchPosts(searchText)}>Search</button>
 					</div>
 				</div>
 			</div>
