@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { signout, profile, allUsers, newprofile } from "./client";
 import {  setCurrentUser, selectCurrentUser, logout } from "./reducer";
 import Sidebar from "./sidebar";
-import { RootState } from '../store';
 import SearchBar from "./searchbar";
 import Community from "./community";
+
+import { getZodiacSign } from "../Utils/zodiacUtils";
+import { fetchHoroscope } from "../API/horoscopeAPI";
 
 
 export default function ProfilePage() {
@@ -21,7 +23,7 @@ export default function ProfilePage() {
 		firstName: "",
 		lastName: "",
 		phone: "",
-		dob: "",
+		dob: new Date('1990-01-01'),
 		role: "",
 		__v: 0,
 	});
@@ -50,6 +52,7 @@ export default function ProfilePage() {
 	//const [searchText, setSearchText] = useState<string>("");
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState("");
+	const [horoscope, setHoroscope] = useState("");
 	const fetchUsers = async (searchText: string) => {
 		//console.log("is this even happening?");
 		const searcheduser = await allUsers(searchText);
@@ -65,21 +68,29 @@ export default function ProfilePage() {
 		const fetchProfile = async () => {
 			try {
 				console.log(userId);
+				let user;
 				if (userId) {
 					// Fetch specific user's profile if userId is provided
-					const user = await newprofile(userId); // Update `profile` function to accept userId if necessary
+					user = await newprofile(userId); // Update `profile` function to accept userId if necessary
 					//console.log("new login", user);
-					setCurrentUser(user);
+					//setCurrentUser(user);
 					//console.log("this is ", currentUser);
 				  } else {
 					// Fetch current user's profile if no userId is provided
-					const user = await profile();
-					setCurrentUser(user);
+					user = await profile();
+					//setCurrentUser(user);
 					//console.log("this is ", user);
 				  }
+				  setCurrentUser(user);
+				  if (user.dob) {
+					const date = new Date(user.dob);
+					const zodiacSign = getZodiacSign(date.getDate(), date.getMonth() + 1);
+					const horoscope = await fetchHoroscope(zodiacSign);  // Fetch from backend
+					setHoroscope(horoscope);
+				} 
 			  } catch (err) {
 				setError("Username not found"); //make this a popup
-				navigate("/");
+				navigate("/profile");
 			  } finally {
 				setLoading(false);
 			  }
@@ -124,6 +135,7 @@ export default function ProfilePage() {
 				{currentUser.phone && <p><strong>Phone:</strong> {currentUser.phone}</p>}
 				{currentUser.dob && <p><strong>Date of Birth:</strong> {new Date(currentUser.dob).toLocaleDateString()}</p>}
 				<p><strong>Role:</strong> {currentUser.role}</p>
+				<p><strong>Today's Horoscope:</strong> {horoscope}</p>
 				<button className="btn-signout" onClick={handleSignOut}>
 				  Sign Out
 				</button>
@@ -131,7 +143,7 @@ export default function ProfilePage() {
 			  </div>
                 </div>
                 <div className="community-container">
-                    <Community />
+                    <Community currentUser={currentUser} />
                 </div>
             </div>
         </div>

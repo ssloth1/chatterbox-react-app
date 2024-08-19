@@ -1,0 +1,54 @@
+.search-container {
+	max-width: 300px;
+}
+
+.border-rounded {
+	border: 1px solid black;
+	border-radius: 0.25rem;
+	padding: 0.25rem;
+}
+
+.button-container {
+	width: 100%;
+}
+
+.btn-danger {
+	padding: 0.5rem 1rem;
+}
+
+.border-0 {
+	border: none;
+}
+
+.home-page-row {
+	padding-top: 20px;
+	padding-left: 2rem;
+	padding-right: 1rem;
+}
+
+.edit-post {
+	width: 75%;
+}
+
+.del-post {
+	width: 75%;
+}
+
+.content-desc-container {
+	width: 75%;
+    padding: 1.5rem;
+    background-color: #f8f9fa; /* Light background color for contrast */
+    border: 2px solid black; /* Black box border */
+    border-radius: 0.5rem; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: 2rem; /* Space above the content box */
+}
+
+.creator-link {
+	color: blue; /* Set text color to blue */
+	text-decoration: none; /* Remove underline */
+  }
+  
+  .creator-link:hover {
+	text-decoration: underline; /* Optional: underline on hover */
+  }

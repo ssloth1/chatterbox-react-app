@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+//import { Link } from "react-router-dom";
 import * as client from "../TopicPage/client";
 import "./styles.css";
 import NavBar from "./NavBar";
@@ -9,7 +9,7 @@ export default function HomePage() {
   const [topics, setTopics] = useState<any[]>([]);
   const [searchText, setSearchText] = useState<string>("");
 
-  const displayAllTopics  = async (searchText : string) => {
+  const displayAllTopics = async (searchText: string) => {
     const topics = await client.fetchAllTopics(searchText);
     setTopics(topics);
   }
@@ -20,12 +20,12 @@ export default function HomePage() {
 
   return (
     <>
-    <NavBar searchText={searchText}
-    setSearchText={setSearchText} 
-    displayAllTopics={displayAllTopics}/>
-    <Content topics ={topics} displayAllTopics={displayAllTopics}/>
+      <NavBar searchText={searchText}
+        setSearchText={setSearchText}
+        displayAllTopics={displayAllTopics} />
+      <Content topics={topics} displayAllTopics={displayAllTopics} />
 
-    {/* <div>
+      {/* <div>
       <div className="row home-page-row">
         <div className="col col-6">
           <div className="col border-rounded search-container">

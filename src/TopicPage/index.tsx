@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import * as client from "../TopicPage/client";
+
+import * as topicClient from "./client";
 import "./styles.css";
 import NavBar from "./Navbar";
 // import Content from "./Content";

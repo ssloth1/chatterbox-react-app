@@ -1,6 +1,6 @@
 // src/Account/client.ts
 import axios from "axios";
-export const REMOTE_SERVER = "http://localhost:4000" ;
+export const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
 const POSTS_API = `${REMOTE_SERVER}/api/posts`;
 const axiosWithCredentials = axios.create({ withCredentials: true });
 
