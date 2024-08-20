@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { allUsers, fetchPosts } from "../Profile/client";
@@ -28,11 +28,11 @@ type User = {
 };
 
 export default function PostPage() {
-  const { pid } = useParams(); // Get the post ID from the URL
+  const { pid } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [post, setPost] = useState<Post | null>(null); // State for the current post
-  const [creatorName, setCreatorName] = useState<string>("Anonymous User");  // State for the creator's username
+  const [post, setPost] = useState<Post | null>(null);
+  const [creatorName, setCreatorName] = useState<string>("Anonymous User");
   const [creatorId, setCreatorId] = useState<string | null>(null);
 
   // Fetch posts and set the current post based on the pid

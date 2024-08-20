@@ -1,4 +1,3 @@
-
 import { deleteTopic } from "../../../../TopicPage/client";
 export default function DeleteModal({
 	displayAllTopics,

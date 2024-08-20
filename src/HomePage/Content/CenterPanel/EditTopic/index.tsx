@@ -54,10 +54,20 @@ export default function EditTopic({ displayAllTopics }: { displayAllTopics: any 
 					></textarea>
 				</div>
 				<div className="d-flex gap-3">
-					<button type="button" className="btn btn-success" onClick={renewTopic}>
+					<button
+						type="button"
+						className="btn btn-success"
+						onClick={renewTopic}
+						style={{ width: "auto", padding: "10px 20px" }}
+					>
 						Save
 					</button>
-					<button type="button" className="btn btn-danger" onClick={() => navigate("./../")}>
+					<button
+						type="button"
+						className="btn btn-danger"
+						onClick={() => navigate("./../")}
+						style={{ width: "auto", padding: "10px 20px" }}
+					>
 						Cancel
 					</button>
 				</div>

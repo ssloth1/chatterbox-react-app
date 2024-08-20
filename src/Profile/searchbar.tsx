@@ -4,7 +4,6 @@ export default function SearchBar({ fetchUsers }: { fetchUsers: (searchText: str
   const [searchText, setSearchText] = useState<string>("");
 
   const handleSearch = () => {
-    //console.log("HIITT");
     fetchUsers(searchText);
   };
 
