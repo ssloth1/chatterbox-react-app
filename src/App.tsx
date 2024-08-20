@@ -7,6 +7,7 @@ import HomePage from "./HomePage";
 import PostPage from "./PostPage";
 import LoginPage from "./Account/LoginPage";
 import SignupPage from "./Account/SignupPage";
+import EditUser from "./Profile/EditUser";
 import store from "./store";
 import Profile from "./Profile";
 import { Provider } from "react-redux";
