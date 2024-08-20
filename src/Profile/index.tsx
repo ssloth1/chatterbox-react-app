@@ -23,7 +23,7 @@ export default function ProfilePage() {
 		firstName: "",
 		lastName: "",
 		phone: "",
-		dob: "",
+		dob: new Date('1990-01-01'),
 		role: "",
 		__v: 0,
 	});
@@ -143,7 +143,7 @@ export default function ProfilePage() {
 			  </div>
                 </div>
                 <div className="community-container">
-                    <Community />
+                    <Community currentUser={currentUser} />
                 </div>
             </div>
         </div>

@@ -9,7 +9,9 @@ export default function PostCard({ post, fetchPosts }: { post: any, fetchPosts: 
 			<div className="card-body">
 				<h5 className="card-title">{post.postTitle}</h5>
 				<p className="card-text">{post.postDesc}</p>
-				<button type="button" className="btn btn-success mx-2">
+				<button type="button" className="btn btn-success mx-2" onClick={() => {
+					navigate(`/${post._id}`);
+				}} >
 					Go
 				</button>
 				<button type="button" className="btn btn-warning mx-1" onClick={() => {

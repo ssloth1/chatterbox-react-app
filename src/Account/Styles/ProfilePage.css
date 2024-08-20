@@ -1,0 +1,52 @@
+/* Profile Page container for full height */
+.profile-container {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	background-color: #f0f0f0;
+}
+
+/* Center the profile card */
+.profile-card-container {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Profile card styling similar to login */
+.profile-card {
+	background-color: white;
+	width: fit-content;
+	padding: 50px;
+	border-radius: 20px;
+	box-shadow: 0 10px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header styling */
+.profile-header {
+	color: black;
+	text-align: center;
+
+
+}
+
+/* Profile body styling */
+.profile-body {
+	padding: 2px;
+}
+
+.btn-signout {
+	background-color: #dc3545;
+	color: white;
+	width: 100%;
+	padding: 10px;
+	border-radius: 20px;
+	border: none;
+	margin-top: 20px;
+	cursor: pointer;
+}
+
+.btn-signout:hover {
+	background-color: #c82333;
+}

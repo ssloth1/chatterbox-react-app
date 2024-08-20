@@ -6,9 +6,9 @@ const TOPICS_API = `${REMOTE_SERVER}/api/topics`;
 export const fetchAllTopics = async (searchText = '') => {
 	const url = `${TOPICS_API}?searchText=${encodeURIComponent(searchText)}`;
 	try {
-		console.log(url);
+		//console.log(url);
 		const { data } = await axios.get(url);
-		console.log(data);
+		//console.log(data);
 		return data;
 	} catch (error) {
 		console.log('Error fetching topics:', error);

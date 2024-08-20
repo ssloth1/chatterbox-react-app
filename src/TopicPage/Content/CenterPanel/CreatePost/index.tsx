@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
 import { createPost } from "../../../../PostPage/client";
-import { selectCurrentUser } from '../../../../Account/reducer';
-
 export default function CreatePost({ fetchPosts }: { fetchPosts: any }) {
 	const { tid } = useParams();
 	const navigate = useNavigate();
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
-	const currentUser = useSelector(selectCurrentUser);
 	const savePost = async () => {
-		await createPost(tid || "", { postTitle: title, postDesc: desc,  creator: currentUser._id  });
+		await createPost(tid || "", { postTitle: title, postDesc: desc });
 		fetchPosts('');
 		navigate('./../');
 

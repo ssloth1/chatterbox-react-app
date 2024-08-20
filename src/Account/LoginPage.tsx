@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
-import { signin, anonymousLogin } from "./client";
-import "./AccountStyles/LoginPage.css";
-
+import { signin, anonymousLogin } from "./client";  // Import anonymous login function
+import "./Styles/LoginPage.css";
 
 export default function LoginPage() {
 	const [identifier, setIdentifier] = useState("");
@@ -17,9 +16,7 @@ export default function LoginPage() {
 		try {
 			const credentials = { identifier, password };
 			const user = await signin(credentials);
-			// console.log("User", user);
 			dispatch(setCurrentUser(user));
-			// console.log("Current User", user);
 			navigate("/Home");
 		} catch (error) {
 			setError("Login failed. Please check your credentials.");
@@ -29,9 +26,7 @@ export default function LoginPage() {
 	const handleAnonymousLogin = async () => {
 		try {
 			const user = await anonymousLogin();
-			// console.log("User", user);
 			dispatch(setCurrentUser(user));
-			// console.log("Current User", user);
 			navigate("/Home");
 		} catch (error) {
 			setError("Anonymous login failed. Please try again.");

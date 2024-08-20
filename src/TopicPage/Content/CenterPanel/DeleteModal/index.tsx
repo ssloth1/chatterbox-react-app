@@ -47,7 +47,7 @@ export default function DeleteModal({
 							onClick={() => {
 								// Add delete logic here
 								removePost();
-								fetchPosts(tid,"");
+								fetchPosts(tid);
 								onClose(); // Close modal after action
 							}}
 						>
