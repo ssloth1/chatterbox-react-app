@@ -124,9 +124,11 @@ export default function PostPage() {
           <div className="create-topic-button-container">
           {isMod && (
               <>
-                <button className="btn btn-lg btn-danger edit-post me-1 float-end">
-                  Edit Post
-                </button>
+                <button type="button" className="btn btn-lg btn-danger edit-post me-1 float-end" onClick={() => {
+		navigate(`../Topics/${post.topicID}/EditPost/${post._id}`);
+		}} >
+		Edit Post
+		</button>
                 <br />
                 <br />
                 <br />
