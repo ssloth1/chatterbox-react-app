@@ -126,7 +126,7 @@ export default function PostPage() {
 					{creatorName}
 					</Link>
 				) : (
-					"Unknown"
+					"Anonymous User"
 				)}
 				</p> 
             </>

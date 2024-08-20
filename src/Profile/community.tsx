@@ -95,7 +95,6 @@ export default function Community({ currentUser }: CommunityProps) {
                 {topic.topicName}
               </Link>
             </li>
-            
           ))
         )}
       </div>

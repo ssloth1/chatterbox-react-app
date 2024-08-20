@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signout, profile, allUsers, newprofile } from "./client";
-import {  setCurrentUser, selectCurrentUser, logout } from "./reducer";
+import {  setCurrentUser, logout } from "./reducer";
 import Sidebar from "./sidebar";
 import SearchBar from "./searchbar";
 import Community from "./community";
+import { selectCurrentUser } from "../Account/reducer";
 
 import { getZodiacSign } from "../Utils/zodiacUtils";
 import { fetchHoroscope } from "../API/horoscopeAPI";
 
 
 export default function ProfilePage() {
+	const userInfo = useSelector(selectCurrentUser);
 	const { userId } = useParams();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -63,23 +65,18 @@ export default function ProfilePage() {
 		navigate(`/profile/${searchedUser[0]._id}`);
 		// navigate to Profile/{profileID} for searched user
 	  };
+	
 
 	useEffect(() => {
 		const fetchProfile = async () => {
 			try {
-				console.log(userId);
 				let user;
 				if (userId) {
 					// Fetch specific user's profile if userId is provided
 					user = await newprofile(userId); // Update `profile` function to accept userId if necessary
-					//console.log("new login", user);
-					//setCurrentUser(user);
-					//console.log("this is ", currentUser);
 				  } else {
 					// Fetch current user's profile if no userId is provided
 					user = await profile();
-					//setCurrentUser(user);
-					//console.log("this is ", user);
 				  }
 				  setCurrentUser(user);
 				  if (user.dob) {
@@ -97,7 +94,7 @@ export default function ProfilePage() {
 			};
 		
 			fetchProfile();
-		  }, [dispatch, navigate]);
+		  }, [dispatch, navigate, userId]);
 
 		
 
@@ -115,7 +112,8 @@ export default function ProfilePage() {
 	if (error) {
 		return <p className="text-center text-danger">{error}</p>;
 	}
-
+	
+	const isOwnProfile = userInfo && userInfo.username === currentUser.username;
 	return (
 		<div className="profile-container">
         <SearchBar fetchUsers={fetchUsers} />
@@ -128,26 +126,28 @@ export default function ProfilePage() {
                             <h2>Profile</h2>
                         </div>
                         <div className="profile-body">
-				<p><strong>Username:</strong> {currentUser.username}</p>
-				<p><strong>Email:</strong> {currentUser.email}</p>
-				{currentUser.firstName && <p><strong>First Name:</strong> {currentUser.firstName}</p>}
-				{currentUser.lastName && <p><strong>Last Name:</strong> {currentUser.lastName}</p>}
-				{currentUser.phone && <p><strong>Phone:</strong> {currentUser.phone}</p>}
-				{currentUser.dob && <p><strong>Date of Birth:</strong> {new Date(currentUser.dob).toLocaleDateString()}</p>}
-				<p><strong>Role:</strong> {currentUser.role}</p>
-				<p><strong>Today's Horoscope:</strong> {horoscope}</p>
-				<button className="btn-signout" onClick={handleSignOut}>
-				  Sign Out
-				</button>
-			  </div>
-			  </div>
+						<p><strong>Username:</strong> {currentUser.username}</p>
+						{isOwnProfile && (
+                    		<>
+                    	<p><strong>Email:</strong> {currentUser.email}</p>
+                            {currentUser.firstName && <p><strong>First Name:</strong> {currentUser.firstName}</p>}
+                            {currentUser.lastName && <p><strong>Last Name:</strong> {currentUser.lastName}</p>}
+                            {currentUser.phone && <p><strong>Phone:</strong> {currentUser.phone}</p>}
+                            {currentUser.dob && <p><strong>Date of Birth:</strong> {new Date(currentUser.dob).toLocaleDateString()}</p>}
+                            <p><strong>Role:</strong> {currentUser.role}</p>
+                            <p><strong>Today's Horoscope:</strong> {horoscope}</p>
+                            <button className="btn-signout" onClick={handleSignOut}>Sign Out</button>
+                            </>
+                    	)}
+			  	</div>
+			  	</div>
                 </div>
                 <div className="community-container">
                     <Community currentUser={currentUser} />
                 </div>
             </div>
         </div>
-    </div>
+    	</div>
 	  );
 	}
 
