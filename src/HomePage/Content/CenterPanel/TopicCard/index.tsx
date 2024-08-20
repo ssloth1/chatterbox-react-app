@@ -1,7 +1,9 @@
 import { useState } from "react";
 import DeleteModal from "../DeleteModal";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./index.css";
+import { selectCurrentUser } from "../../../../Account/reducer";
 
 export default function TopicCard({
 	topic,
@@ -12,6 +14,8 @@ export default function TopicCard({
 }) {
 	const navigate = useNavigate();
 	const [isModalOpen, setModalOpen] = useState(false);
+	const userInfo = useSelector(selectCurrentUser);
+	const isMod = userInfo.role === 'MODERATOR' || userInfo.role === 'STAFF';
 
 	return (
 		<div className="topic-card">
@@ -24,6 +28,8 @@ export default function TopicCard({
 							Go
 						</button>
 					</Link>
+					{isMod && (
+					<>
 					<button
 						type="button"
 						className="card-btn card-btn-edit"
@@ -40,6 +46,8 @@ export default function TopicCard({
 					>
 						Delete
 					</button>
+					</>
+				)}
 				</div>
 			</div>
 			<DeleteModal
@@ -51,3 +59,4 @@ export default function TopicCard({
 		</div>
 	);
 }
+
