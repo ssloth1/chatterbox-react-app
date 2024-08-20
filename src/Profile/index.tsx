@@ -52,14 +52,12 @@ export default function ProfilePage() {
 		__v: number,
 	};
 	//const [searchText, setSearchText] = useState<string>("");
+	//const [isEditing, setIsEditing] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState("");
 	const [horoscope, setHoroscope] = useState("");
 	const fetchUsers = async (searchText: string) => {
-		//console.log("is this even happening?");
 		const searcheduser = await allUsers(searchText);
-		//console.log("this is it", searchText);
-		//console.log("searched user", (searcheduser.filter((user: User) => user.username === searchText)));
 		const searchedUser = searcheduser.filter((user: User) => user.username === searchText);
 		//console.log("search id", searchedUser[0]._id);
 		navigate(`/profile/${searchedUser[0]._id}`);
@@ -138,6 +136,15 @@ export default function ProfilePage() {
                             {currentUser.dob && <p><strong>Date of Birth:</strong> {new Date(currentUser.dob).toLocaleDateString()}</p>}
                             <p><strong>Role:</strong> {currentUser.role}</p>
                             <p><strong>Today's Horoscope:</strong> {horoscope}</p>
+							<div className="d-flex justify-content-center">
+							<button
+								type="button"
+								className="btn-signout btn-warning mx-1"
+								onClick={() => navigate(`./EditUser/${userInfo._id}`)}
+							>
+								Edit Profile
+							</button>
+							</div>
                             <button className="btn-signout" onClick={handleSignOut}>Sign Out</button>
                             </>
                     	)}
