@@ -36,19 +36,19 @@
 
 .content-desc-container {
 	width: 75%;
-    padding: 1.5rem;
-    background-color: #f8f9fa; /* Light background color for contrast */
-    border: 2px solid black; /* Black box border */
-    border-radius: 0.5rem; /* Rounded corners for a softer look */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    margin-top: 2rem; /* Space above the content box */
+	padding: 1.5rem;
+	background-color: #f8f9fa;
+	border: 2px solid black;
+	border-radius: 0.5rem;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin-top: 2rem;
 }
 
 .creator-link {
-	color: blue; /* Set text color to blue */
-	text-decoration: none; /* Remove underline */
-  }
-  
-  .creator-link:hover {
-	text-decoration: underline; /* Optional: underline on hover */
-  }
+	color: blue;
+	text-decoration: none;
+}
+
+.creator-link:hover {
+	text-decoration: underline;
+}
