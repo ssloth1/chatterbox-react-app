@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { allUsers, fetchPosts } from "../Profile/client"; // Assuming this is the correct import for fetching posts
+import { allUsers, fetchPosts } from "../Profile/client";
 import { deletePost } from "./reducer";
 import "./PostStyles/index.css";
 
@@ -29,7 +29,7 @@ type User = {
 
 export default function PostPage() {
   const { pid } = useParams(); // Get the post ID from the URL
-  const navigate = useNavigate(); // For navigating programmatically
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [post, setPost] = useState<Post | null>(null); // State for the current post
   const [creatorName, setCreatorName] = useState<string>("Anonymous User");  // State for the creator's username
@@ -48,7 +48,7 @@ export default function PostPage() {
         }
       } catch (err) {
         console.error("Couldn't load post", err);
-        navigate('/'); // Navigate to the homepage if an error occurs
+        navigate("/Home"); // Navigate to the homepage if an error occurs
       }
     };
 
@@ -58,12 +58,10 @@ export default function PostPage() {
   // Fetch the creator's profile and set the creator's username
   const fetchAndSetCreatorName = async (creatorId: string) => {
     try {
-      const users = await allUsers(); // Fetch all users
-	  console.log(users);
+      const users = await allUsers();
       const creator = users.find((user: User) => user._id === creatorId); // Find the user that matches the creatorId
       if (creator) {
-        setCreatorName(creator.username); // Set the creator's username
-		setCreatorId(creator._id);
+        setCreatorName(creator.username);
       }
     } catch (err) {
       console.error("Couldn't load creator's profile", err);
@@ -73,63 +71,52 @@ export default function PostPage() {
   const handleDelete = (postId: string) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       dispatch(deletePost(postId));
-      navigate('/Home');
+      navigate("/Home");
     }
   };
 
   if (!post) {
-    return null; // Optionally render a loading indicator here
+    return null;
   }
 
   return (
-    <div>
-      <div className="row home-page-row">
-        <div className="col col-6">
-          <div className="border-rounded search-container">
-            <input className="border-0 full-width" placeholder="Search" />
-          </div>
+    <div className="post-page">
+      <div className="post-page-header">
+        <div className="search-container">
+          <input className="border-0 full-width" placeholder="Search" />
         </div>
-        <div className="col col-6">
-          <div className="button-container">
-            <Link to="/Home" className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover">
-              <button className="btn btn-lg btn-danger me-1 float-end full-width">
-                Home Page
-              </button>
-            </Link>
-          </div>
+        <div className="post-page-buttons">
+          <Link
+            to="/Home"
+            className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
+          >
+            <button className="btn btn-danger btn-home">Home Page</button>
+          </Link>
         </div>
       </div>
-      <div className="row">
-        <div className="col-3 left-col">
-          <div className="create-topic-button-container">
-            <button className="btn btn-lg btn-danger edit-post me-1 float-end">
-              Edit Post
-            </button>
-            <br /><br /><br />
-            <button className="btn btn-lg btn-danger del-post me-1 float-end" onClick={() => handleDelete(post._id)}>
-              Delete Post
-            </button>
-          </div>
+      <div className="post-page-content">
+        <div className="post-sidebar">
+          <button className="btn btn-warning btn-edit" onClick={() => navigate(`/EditPost/${post._id}`)}>
+            Edit Post
+          </button>
+          <button className="btn btn-danger btn-delete" onClick={() => handleDelete(post._id)}>
+            Delete Post
+          </button>
         </div>
-        <div className="col-9 center-col">
-          <div className="content-desc-container">
-            <>
-              <h2>{post.postTitle}</h2>
-              <h5>{post.postDesc}</h5>
-              <p>
-				Created by:{" "}
-				{creatorId ? (
-					<Link 
-					to={`/profile/${creatorId}`} 
-					className="creator-link" 
-					>
-					{creatorName}
-					</Link>
-				) : (
-					"Anonymous User"
-				)}
-				</p> 
-            </>
+        <div className="post-content">
+          <div className="post-details">
+            <h2 className="post-title">{post.postTitle}</h2>
+            <h5 className="post-desc">{post.postDesc}</h5>
+            <p className="post-creator">
+              Created by:{" "}
+              {creatorId ? (
+                <Link to={`/profile/${creatorId}`} className="creator-link">
+                  {creatorName}
+                </Link>
+              ) : (
+                "Anonymous User"
+              )}
+            </p>
           </div>
         </div>
       </div>

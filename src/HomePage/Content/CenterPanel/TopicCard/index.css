@@ -1,0 +1,65 @@
+.topic-card {
+	width: 100%;
+	border-radius: 15px;
+	overflow: hidden;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 20px;
+	background-color: #ffffff;
+}
+
+.topic-card-body {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.topic-card-title {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	color: #333;
+	font-weight: bold;
+}
+
+.topic-card-text {
+	font-size: 1rem;
+	margin-bottom: 20px;
+	color: #666;
+}
+
+.card-buttons {
+	display: flex;
+	gap: 15px;
+	margin-top: 20px;
+}
+
+.card-btn {
+	width: 100px;
+	padding: 12px;
+	border-radius: 20px;
+	border: none;
+	cursor: pointer;
+	text-align: center;
+	font-weight: bold;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-btn-go {
+	background-color: #20C997;
+	color: white;
+}
+
+.card-btn-edit {
+	background-color: #FFC107;
+	color: white;
+}
+
+.card-btn-delete {
+	background-color: #DC3545;
+	color: white;
+}

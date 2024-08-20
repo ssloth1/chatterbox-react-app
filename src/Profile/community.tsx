@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { allUsers, fetchPosts } from "./client"; // Assume this function fetches all posts from the server
+import { allUsers, fetchPosts } from "./client";
 
 type Post = {
   _id: string;
@@ -33,7 +33,7 @@ type User = {
 };
 
 type CommunityProps = {
-  currentUser: User; // Add the User type definition
+  currentUser: User;
 };
 
 export default function Community({ currentUser }: CommunityProps) {
@@ -45,7 +45,7 @@ export default function Community({ currentUser }: CommunityProps) {
     const fetchAndFilterPosts = async () => {
       try {
         // profile/profile_id
-        const allPosts = await fetchPosts(); 
+        const allPosts = await fetchPosts();
         if (userId) {
           const userTopics = allPosts
             .filter((post: Post) => post.creator === userId)

@@ -1,11 +1,11 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 export default function LeftSideBar() {
-	const navigate = useNavigate(); // Initialize the navigate function
+	const navigate = useNavigate();
 
 	return (
-		<div className="col-12 col-md-3 border border-1 ">
+		<div className="col-12 col-md-1 border border-1 ">
 			<button
 				type="button"
 				className="btn btn-success w-50 m-5"

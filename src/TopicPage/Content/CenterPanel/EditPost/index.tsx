@@ -5,7 +5,7 @@ import { fetchPost, updatePost } from "../../../../PostPage/client";
 export default function EditPost({ fetchPosts }: { fetchPosts: any }) {
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
-	const [post, setPost] = useState<any>(undefined); // Define a more specific type if possible
+	const [post, setPost] = useState<any>(undefined);
 	const { pid } = useParams();
 	const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export default function EditPost({ fetchPosts }: { fetchPosts: any }) {
 			const updatedPost = { ...post, postTitle: title, postDesc: desc };
 			await updatePost(updatedPost);
 			navigate("./../../");
-			fetchPosts(post.topic); // Assuming this updates the topic listnavigate("./../");
+			fetchPosts(post.topic);
 		}
 	};
 
@@ -41,7 +41,7 @@ export default function EditPost({ fetchPosts }: { fetchPosts: any }) {
 						<div className="form-group mt-2">
 							<label htmlFor="topicTitle">Post Title:</label>
 							<input
-								type="text" // Changed from "title" to "text"
+								type="text"
 								className="form-control mt-2"
 								id="topicTitle"
 								placeholder="Enter Title"

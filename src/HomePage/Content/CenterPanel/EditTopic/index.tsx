@@ -5,7 +5,7 @@ import { fetchTopic, updateTopic } from "../../../../TopicPage/client";
 export default function EditTopic({ displayAllTopics }: { displayAllTopics: any }) {
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
-	const [topic, setTopic] = useState<any>(undefined); // Define a more specific type if possible
+	const [topic, setTopic] = useState<any>(undefined);
 	const { tid } = useParams();
 	const navigate = useNavigate();
 
@@ -27,14 +27,14 @@ export default function EditTopic({ displayAllTopics }: { displayAllTopics: any 
 			const updatedTopic = { ...topic, topicTitle: title, topicDesc: desc };
 			await updateTopic(updatedTopic);
 			navigate("./../../");
-			displayAllTopics(""); // Assuming this updates the topic listnavigate("./../");
+			displayAllTopics("");
 		}
 	};
 
 	return (
 		<div className="col-12 col-md-9 border border-1">
 			<div className="mt-4 mx-5"><div className="row heading"><h1 className="text-muted">Edit Topic</h1></div><div className="row form"><form><div className="form-group mt-2"><label htmlFor="topicName">Topic Title:</label><input
-				type="text" // Changed from "title" to "text"
+				type="text"
 				className="form-control mt-2"
 				id="topicName"
 				placeholder="Enter Title"

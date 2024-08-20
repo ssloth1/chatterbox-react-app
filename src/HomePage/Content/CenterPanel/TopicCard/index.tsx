@@ -1,7 +1,8 @@
 import { useState } from "react";
 import DeleteModal from "../DeleteModal";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
-//import { typeImplementation } from "@testing-library/user-event/dist/type/typeImplementation";
+import { Link, useNavigate } from "react-router-dom";
+import "./index.css";
+
 export default function TopicCard({
 	topic,
 	displayAllTopics,
@@ -13,34 +14,33 @@ export default function TopicCard({
 	const [isModalOpen, setModalOpen] = useState(false);
 
 	return (
-		<div className="card w-100 border border-2 mt-3">
-			<div className="card-body">
-				<h5 className="card-title">{topic.topicTitle}</h5>
-				<p className="card-text">{topic.topicDesc}</p>
-				<Link
-					to={`/Topics/${topic._id}`}
-					className="link-dark link-underline link-underline-opacity-0 link-underline-opacity-100-hover"
-				>
-					<button type="button" className="btn btn-success mx-2">
-						Go
+		<div className="topic-card">
+			<div className="topic-card-body">
+				<h5 className="topic-card-title">{topic.topicTitle}</h5>
+				<p className="topic-card-text">{topic.topicDesc}</p>
+				<div className="card-buttons">
+					<Link to={`/Topics/${topic._id}`}>
+						<button type="button" className="card-btn card-btn-go">
+							Go
+						</button>
+					</Link>
+					<button
+						type="button"
+						className="card-btn card-btn-edit"
+						onClick={() => {
+							navigate(`./../EditTopic/${topic._id}`);
+						}}
+					>
+						Edit
 					</button>
-				</Link>
-				<button
-					type="button"
-					className="btn btn-warning mx-1"
-					onClick={() => {
-						navigate(`./../EditTopic/${topic._id}`);
-					}}
-				>
-					Edit
-				</button>
-				<button
-					type="button"
-					className="btn btn-danger mx-2"
-					onClick={() => setModalOpen(true)}
-				>
-					Delete
-				</button>
+					<button
+						type="button"
+						className="card-btn card-btn-delete"
+						onClick={() => setModalOpen(true)}
+					>
+						Delete
+					</button>
+				</div>
 			</div>
 			<DeleteModal
 				displayAllTopics={displayAllTopics}
