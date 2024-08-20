@@ -76,7 +76,8 @@ export default function ProfilePage() {
 					user = await newprofile(userId); // Update `profile` function to accept userId if necessary
 				  } else {
 					// Fetch current user's profile if no userId is provided
-					user = await profile();
+					//console.log(userInfo._id);
+					user = await newprofile(userInfo._id);
 				  }
 				  setCurrentUser(user);
 				  if (user.dob) {
@@ -86,6 +87,7 @@ export default function ProfilePage() {
 					setHoroscope(horoscope);
 				} 
 			  } catch (err) {
+				console.log(userInfo._id);
 				setError("Username not found"); //make this a popup
 				navigate("/profile");
 			  } finally {
