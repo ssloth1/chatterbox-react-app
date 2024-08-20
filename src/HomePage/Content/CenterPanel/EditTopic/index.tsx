@@ -15,8 +15,8 @@ export default function EditTopic({ displayAllTopics }: { displayAllTopics: any 
 			if (tid) {
 				const fetchedTopic = await fetchTopic(tid);
 				setTopic(fetchedTopic);
-				setTitle(fetchedTopic.topicName);
-				setDesc(fetchedTopic.topicDescription);
+				setTitle(fetchedTopic.topicTitle);
+				setDesc(fetchedTopic.topicDesc);
 			}
 		};
 		fetchData();
@@ -24,7 +24,7 @@ export default function EditTopic({ displayAllTopics }: { displayAllTopics: any 
 
 	const renewTopic = async () => {
 		if (topic) {
-			const updatedTopic = { ...topic, topicName: title, topicDescription: desc };
+			const updatedTopic = { ...topic, topicTitle: title, topicDesc: desc };
 			await updateTopic(updatedTopic);
 			navigate("./../../");
 			displayAllTopics(""); // Assuming this updates the topic listnavigate("./../");
