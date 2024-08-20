@@ -1,5 +1,4 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 export default function LeftSideBar() {
 	const navigate = useNavigate(); // Initialize the navigate function

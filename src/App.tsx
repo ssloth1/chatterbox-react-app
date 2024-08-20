@@ -14,14 +14,14 @@ import { Provider } from "react-redux";
 import AuthWrapper from "./Account/AuthWrapper";
 import LandingPage from "./LandingPage";
 import StaffPanel from "./StaffPanel";
+import TopicPage from "./TopicPage";
 
 // import bootstrap css
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-
 import Test from "./Test";
-import TopicPage from "./TopicPage";
+
 
 function App() {
   return (

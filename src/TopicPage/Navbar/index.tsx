@@ -1,8 +1,4 @@
-import React, { useState, useEffect } from "react";
-
-import { fetchAllTopics } from "../../TopicPage/client";
-
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NavBar({
 	searchText,
@@ -13,13 +9,12 @@ export default function NavBar({
 	setSearchText: any;
 	fetchPosts: any;
 }) {
+	const navigate = useNavigate();
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light ">
+		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container-fluid">
-				<a className="navbar-brand mx-5">
-					ChatterBox
-				</a>
+				<a className="navbar-brand mx-5">ChatterBox</a>
 				<button
 					className="navbar-toggler"
 					type="button"
@@ -34,14 +29,14 @@ export default function NavBar({
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 						<li className="nav-item">
-							<a className="nav-link active" aria-current="page">
+							<Link to="/Home" className="nav-link active" aria-current="page">
 								Home
-							</a>
+							</Link>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#">
+							<Link to="/profile" className="nav-link">
 								Profile
-							</a>
+							</Link>
 						</li>
 					</ul>
 					<div className="d-flex">

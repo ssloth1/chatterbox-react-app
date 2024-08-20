@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
-import { signin, anonymousLogin } from "./client";  // Import anonymous login function
+import { signin, anonymousLogin } from "./client";
 import "./Styles/LoginPage.css";
 
 export default function LoginPage() {

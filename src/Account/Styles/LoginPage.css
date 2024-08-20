@@ -18,82 +18,6 @@
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.login-section {
-	background-color: white;
-	width: 55%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 2rem;
-}
-
-.signup-section {
-	background-color: #dc3545;
-	width: 45%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	color: white;
-}
-
-input {
-	width: 80%;
-	padding: 10px;
-	margin: 10px 0;
-	border-radius: 5px;
-	border: 1px solid #ccc;
-}
-
-.btn-login,
-.btn-signup,
-.btn-anonymous {
-	width: 40%;
-	padding: 10px;
-	margin-top: 20px;
-	border-radius: 20px;
-	border: none;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-}
-
-.btn-login {
-	background-color: #dc3545;
-	color: white;
-}
-
-.btn-signup {
-	background-color: white;
-	color: #dc3545;
-}
-
-.btn-anonymous {
-	background-color: #6c757d;
-	color: white;
-}
-
-.vh-100 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	width: 100vw;
-	margin: 0;
-	position: relative;
-	background-color: #f0f0f0;
-}
-
-.login-container {
-	display: flex;
-	width: 865px;
-	height: 500px;
-	border-radius: 20px;
-	overflow: hidden;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
 .login-section,
 .signup-section {
 	display: flex;
@@ -136,15 +60,20 @@ button {
 .btn-login {
 	background-color: #dc3545;
 	color: white;
+	border-radius: 25px;
 }
 
 .btn-signup {
 	background-color: white;
 	color: #dc3545;
+	padding: 8px 20px;
+	border-radius: 25px;
+	text-decoration: none;
 }
 
 .btn-anonymous {
 	background-color: #6c757d;
+	border-radius: 25px;
 	color: white;
 	margin-top: 30px;
 	padding: 12px 20px;

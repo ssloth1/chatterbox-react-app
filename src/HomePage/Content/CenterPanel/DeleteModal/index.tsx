@@ -1,4 +1,3 @@
-
 import { deleteTopic } from "../../../../TopicPage/client";
 export default function DeleteModal({
 	displayAllTopics,
@@ -43,7 +42,6 @@ export default function DeleteModal({
 							type="button"
 							className="btn btn-danger"
 							onClick={() => {
-								// Add delete logic here
 								removeTopic();
 								displayAllTopics('');
 								onClose(); // Close modal after action

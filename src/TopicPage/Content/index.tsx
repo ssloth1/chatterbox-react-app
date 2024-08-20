@@ -16,14 +16,12 @@ export default function Content({
 		<div className="row">
 			<LeftSideBar />
 			<Routes>
-				{/* <Route path="/" element={<CenterPanel posts={posts} fetchPosts={fetchPosts} />} /> */}
 				<Route path="/" element={<Navigate to="CenterPanel" />} />
 				<Route path="/CenterPanel" element={<CenterPanel posts={posts} fetchPosts={fetchPosts} />} />
 				<Route path="/CreatePost" element={<CreatePost fetchPosts={fetchPosts} />} />
 				<Route path="/EditPost/:pid" element={<EditPost fetchPosts={fetchPosts} />} />
 			</Routes>
-			{/*  */}
-			{/* <EditTopic /> */}
+
 		</div>
 	);
 }

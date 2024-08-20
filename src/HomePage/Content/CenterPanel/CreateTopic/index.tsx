@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { createTopic } from "../../../../TopicPage/client";
@@ -9,7 +9,7 @@ export default function CreateTopic({ displayAllTopics }: { displayAllTopics: an
 	const [title, setTitle] = useState("");
 	const [desc, setDesc] = useState("");
 
-	// Get currentUser from the Redux store
+	// get the current user from the store
 	const currentUser = useSelector(selectCurrentUser);
 
 	const saveTopic = async () => {
@@ -24,16 +24,16 @@ export default function CreateTopic({ displayAllTopics }: { displayAllTopics: an
 		}
 
 		try {
-			// Log the fields for debugging
+			// logging fields for debugging, we can remove this later
 			console.log("Title:", title);
 			console.log("Description:", desc);
 			console.log("Creator (User ID):", currentUser._id);
 
-			// Send the payload with the correct field names
+			// send payload to createTopic function
 			await createTopic({
 				topicTitle: title,          // Match the 'topicTitle' field in our schema
 				topicDesc: desc,            // Match the 'topicDesc' field in our schema
-				creator: currentUser._id    // Match the 'creator' field in your schema
+				creator: currentUser._id    // Match the 'creator' field in our schema
 			});
 
 			displayAllTopics('');

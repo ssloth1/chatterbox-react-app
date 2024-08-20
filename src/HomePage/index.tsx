@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-//import { Link } from "react-router-dom";
 import * as client from "../TopicPage/client";
 import "./styles.css";
 import NavBar from "./NavBar";

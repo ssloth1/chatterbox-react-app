@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 import PostCard from "./PostCard";
 import { useParams } from "react-router";
+
 export default function CenterPanel({ posts, fetchPosts }: { posts: any, fetchPosts: any }) {
 	const { tid } = useParams();
 	return (

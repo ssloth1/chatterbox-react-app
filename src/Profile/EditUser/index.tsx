@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { fetchUser, updateUser } from "../client"; // Assuming these functions exist
+import { fetchUser, updateUser } from "../client";
 
 export default function EditUser() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
-	const [user, setUser] = useState<any>(undefined); // Define a more specific type if possible
+	const [user, setUser] = useState<any>(undefined);
 	const { userId } = useParams();
 	const navigate = useNavigate();
 
@@ -22,6 +22,7 @@ export default function EditUser() {
 		fetchData();
 	}, [userId]);
 
+	// update user data
 	const renewUser = async () => {
 		if (user) {
 			const updatedUser = { ...user, name, email };

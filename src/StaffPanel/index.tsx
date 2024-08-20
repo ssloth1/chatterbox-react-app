@@ -47,7 +47,7 @@ export default function StaffPanel() {
     };
 
     const displayAllTopics = (text: string) => {
-        // Implement your search/filter logic here if needed
+        // later we can implment functionality to display topics with search text
         console.log("Displaying topics with search text:", text);
     };
 

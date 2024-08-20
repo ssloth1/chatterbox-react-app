@@ -1,4 +1,3 @@
-//import React, { useState, useEffect } from "react";
 import TopicCard from "./TopicCard";
 import { AnyARecord } from "dns";
 export default function CenterPanel({ topics, displayAllTopics }: { topics: any, displayAllTopics: AnyARecord }) {

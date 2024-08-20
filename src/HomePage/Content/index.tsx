@@ -1,4 +1,3 @@
-//import React, { useState, useEffect } from "react";
 import LeftSideBar from "./LeftSideBar";
 import CenterPanel from "./CenterPanel";
 import CreateTopic from "./CenterPanel/CreateTopic";

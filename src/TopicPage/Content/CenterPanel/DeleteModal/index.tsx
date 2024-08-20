@@ -1,6 +1,7 @@
 
 import { useParams } from "react-router";
 import { deletePost } from "../../../../PostPage/client";
+
 export default function DeleteModal({
 	fetchPosts,
 	isOpen,
@@ -45,10 +46,9 @@ export default function DeleteModal({
 							type="button"
 							className="btn btn-danger"
 							onClick={() => {
-								// Add delete logic here
 								removePost();
 								fetchPosts(tid);
-								onClose(); // Close modal after action
+								onClose();
 							}}
 						>
 							Delete
