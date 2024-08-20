@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { createPost } from "../../../../PostPage/client";
 import { selectCurrentUser } from "../../../../Account/reducer";
+
 export default function CreatePost({ fetchPosts }: { fetchPosts: any }) {
 	const { tid } = useParams();
 	const navigate = useNavigate();

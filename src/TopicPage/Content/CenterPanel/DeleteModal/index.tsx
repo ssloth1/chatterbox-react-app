@@ -1,6 +1,7 @@
 
 import { useParams } from "react-router";
 import { deletePost } from "../../../../PostPage/client";
+
 export default function DeleteModal({
 	fetchPosts,
 	isOpen,
