@@ -14,6 +14,7 @@ type Post = {
 
 type Topic = {
   _id: string;
+  postlink: string;
   topicName: string;
   creator: string;
   creationDate: string;
@@ -50,6 +51,7 @@ export default function Community({ currentUser }: CommunityProps) {
             .filter((post: Post) => post.creator === userId)
             .map((post: Post) => ({
               _id: post.topicID,
+              postlink: post._id,
               topicName: post.postTitle,
               creator: post.creator,
               creationDate: post.postDate,
@@ -61,6 +63,7 @@ export default function Community({ currentUser }: CommunityProps) {
             .filter((post: Post) => post.creator === currentUser._id)
             .map((post: Post) => ({
               _id: post.topicID,
+              postlink: post._id,
               topicName: post.postTitle,
               creator: post.creator,
               creationDate: post.postDate,
@@ -87,8 +90,8 @@ export default function Community({ currentUser }: CommunityProps) {
           <p>No active communities found for this user.</p>
         ) : (
           topics.map((topic: Topic) => (
-            <li key={topic._id} className="topic-item">
-              <Link to={`/topics/${topic._id}`}>
+            <li key={topic.postlink} className="topic-item">
+              <Link to={`/${topic.postlink}`}>
                 {topic.topicName}
               </Link>
             </li>

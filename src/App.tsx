@@ -7,6 +7,7 @@ import HomePage from "./HomePage";
 import PostPage from "./PostPage";
 import LoginPage from "./Account/LoginPage";
 import SignupPage from "./Account/SignupPage";
+import EditUser from "./Profile/EditUser";
 import store from "./store";
 import Profile from "./Profile";
 import { Provider } from "react-redux";
@@ -37,7 +38,7 @@ function App() {
           <Route path="/profile" element={<AuthWrapper> <Profile /> </AuthWrapper>} />
           <Route path="/profile/:userId" element={<AuthWrapper><Profile /></AuthWrapper>} />
           <Route path="/Topics/:tid/*" element={<AuthWrapper> <TopicPage /> </AuthWrapper>} />
-
+          <Route path="/profile/EditUser/:userId" element={<AuthWrapper><EditUser /></AuthWrapper>} />
           {/* to acess the admin panel, a staff member must be logged in, 
           then they will need to manually enter the route https://chatterbox-react-app.netlify.app/admin,
           or if they are working locally http://localhost:3000/admin */}

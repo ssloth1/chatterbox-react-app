@@ -16,11 +16,11 @@ export default function TopicPage() {
   const { tid } = useParams();
   const [posts, setPosts] = useState<any[]>([]);
   const [searchText, setSearchText] = useState<string>("");
-  async function fetchPosts() {
+  async function fetchPosts (searchText: string) {
     setPosts(await findPostsForTopic(tid || "", searchText));
   }
   useEffect(() => {
-    fetchPosts();
+    fetchPosts(searchText);
   }, []);
   return (
     <>

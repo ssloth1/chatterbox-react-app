@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { allUsers, fetchPosts } from "../Profile/client"; // Assuming this is the correct import for fetching posts
+import { useDispatch, useSelector } from "react-redux";
+import { allUsers, fetchPosts, newprofile } from "../Profile/client"; // Assuming this is the correct import for fetching posts
 import { deletePost } from "./reducer";
 import "./PostStyles/index.css";
+import { selectCurrentUser } from "../Account/reducer";
 
 type Post = {
   _id: string;
@@ -34,7 +35,18 @@ export default function PostPage() {
   const [post, setPost] = useState<Post | null>(null); // State for the current post
   const [creatorName, setCreatorName] = useState<string>("Anonymous User");  // State for the creator's username
   const [creatorId, setCreatorId] = useState<string | null>(null);
-
+  const userInfo = useSelector(selectCurrentUser);
+  const [currentUser, setCurrentUser] = useState({
+		_id: "",
+		username: "",
+		email: "",
+		firstName: "",
+		lastName: "",
+		phone: "",
+		dob: new Date('1990-01-01'),
+		role: "",
+		__v: 0,
+	});
   // Fetch posts and set the current post based on the pid
   useEffect(() => {
     const fetchAndFilterPosts = async () => {
@@ -51,10 +63,18 @@ export default function PostPage() {
         navigate('/'); // Navigate to the homepage if an error occurs
       }
     };
-
     fetchAndFilterPosts();
+    //fetchProfile();
   }, [pid, navigate]);
-
+  
+  // const fetchProfile = async () => {
+  //   try {
+  //       const user = await newprofile(userInfo._id);
+  //       setCurrentUser(user);
+  //     } catch (err) {
+  //     console.log(userInfo._id);
+  //     } 
+  //   };
   // Fetch the creator's profile and set the creator's username
   const fetchAndSetCreatorName = async (creatorId: string) => {
     try {
@@ -63,7 +83,7 @@ export default function PostPage() {
       const creator = users.find((user: User) => user._id === creatorId); // Find the user that matches the creatorId
       if (creator) {
         setCreatorName(creator.username); // Set the creator's username
-		setCreatorId(creator._id);
+		    setCreatorId(creator._id);
       }
     } catch (err) {
       console.error("Couldn't load creator's profile", err);
@@ -80,7 +100,7 @@ export default function PostPage() {
   if (!post) {
     return null; // Optionally render a loading indicator here
   }
-
+  const isMod = userInfo.role === 'MODERATOR' || userInfo._id === creatorId;
   return (
     <div>
       <div className="row home-page-row">
@@ -102,13 +122,22 @@ export default function PostPage() {
       <div className="row">
         <div className="col-3 left-col">
           <div className="create-topic-button-container">
-            <button className="btn btn-lg btn-danger edit-post me-1 float-end">
-              Edit Post
-            </button>
-            <br /><br /><br />
-            <button className="btn btn-lg btn-danger del-post me-1 float-end" onClick={() => handleDelete(post._id)}>
-              Delete Post
-            </button>
+          {isMod && (
+              <>
+                <button className="btn btn-lg btn-danger edit-post me-1 float-end">
+                  Edit Post
+                </button>
+                <br />
+                <br />
+                <br />
+                <button
+                  className="btn btn-lg btn-danger del-post me-1 float-end"
+                  onClick={() => handleDelete(post._id)}
+                >
+                  Delete Post
+                </button>
+              </>
+            )}
           </div>
         </div>
         <div className="col-9 center-col">
@@ -126,7 +155,7 @@ export default function PostPage() {
 					{creatorName}
 					</Link>
 				) : (
-					"Unknown"
+					"Anonymous User"
 				)}
 				</p> 
             </>
